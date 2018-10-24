@@ -90,6 +90,13 @@ num_segments = MethodSpec(name='num_segments',
     class_names=("Morphology")
     )
 
+_hash = MethodSpec(name='__hash__',
+    source='''\
+    def __hash__(self):
+        return id(self)
+    ''',
+    class_names=('Base')
+    )
 
 length = MethodSpec(name='length',
     source='''\
@@ -160,7 +167,8 @@ surface_area = MethodSpec(name='surface_area',
 # Provide a list of your method specifications.
 #   This list of specifications must be named METHOD_SPECS.
 #
-METHOD_SPECS=(length,
+METHOD_SPECS=(_hash,
+              length,
               volume,
               surface_area,
               num_segments,
