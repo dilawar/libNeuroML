@@ -276,7 +276,7 @@ def _read_neuroml2(nml2_file_name_or_string, include_includes=False, verbose=Fal
         print_method('Including included files (included already: %s)' \
                       % already_included, verbose)
         
-        for include in nml2_doc.includes:
+        for include in nml2_doc.include:
             incl_loc = os.path.abspath(os.path.join(base_path_to_use, include.href))
             if incl_loc not in already_included:
                 print_method("Loading included NeuroML2 file: %s (base: %s, resolved: %s)" % (include.href, base_path_to_use, incl_loc), 
@@ -296,14 +296,14 @@ def _read_neuroml2(nml2_file_name_or_string, include_includes=False, verbose=Fal
                 else:
                     raise Exception("Unrecognised extension on file: %s"%incl_loc)
                 
-        nml2_doc.includes = []
+        nml2_doc.include = []
         
     else:
-        if len(nml2_doc.includes)>0:
-            print_method('NOT including included files, even though %s are included!'%len(nml2_doc.includes), verbose)           
+        if len(nml2_doc.include)>0:
+            print_method('NOT including included files, even though %s are included!'%len(nml2_doc.include), verbose)           
                     
                             
-        nml2_doc.includes = []
+        nml2_doc.include = []
             
     return nml2_doc
 
